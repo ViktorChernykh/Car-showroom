@@ -26,13 +26,13 @@ class DetailViewController: UIViewController {
         // create a new scene
         let scene = SCNScene(named: car.url)!
         
-        if car.name == "ship" {
+        //if (car.name == "ship") || (car.name == "Dodge") || (car.name == "ZIS-5B") {
             // retrieve the ship node
             let ship = scene.rootNode.childNode(withName: car.name, recursively: true)!
             
             // animate the 3d object
             ship.runAction(SCNAction.repeatForever(SCNAction.rotateBy(x: 0, y: 2, z: 0, duration: 5)))
-        }
+        //}
         
         // set the scene to the view
         scnView.scene = scene

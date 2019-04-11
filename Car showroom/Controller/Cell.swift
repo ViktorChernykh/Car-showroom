@@ -28,10 +28,7 @@ class Cell: UITableViewCell {
         
         guard let scene = SCNScene(named: car.url) else { return }
         
-//        let rootNode = scene.rootNode.childNodes[0]
-//        rootNode.name = car.name
-        
-        if car.name == "ship" {
+        if (car.name == "ship") || (car.name == "Dodge") || (car.name == "ZIS-5B") {
             // retrieve the ship node
             guard let node = scene.rootNode.childNode(withName: car.name, recursively: true) else { return }
             
