@@ -126,7 +126,7 @@ extension DetailViewController {
     func setupUI() {
         guard let car = car else { return }
 
-        nameLabel.text = car.name
+        nameLabel.text = car.characteristics
 //                timestampLabel.text = String(car.timestamp)
 //                ratingLabel.text = car.stars
 //                notesLabel.text = car.characteristics
