@@ -84,7 +84,6 @@
 		7799D57F225F337900EC6E91 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				7799D584225F358B00EC6E91 /* Cell.swift */,
 				7799D586225F35E600EC6E91 /* ListViewController.swift */,
 				7799D56E225F332300EC6E91 /* DetailViewController.swift */,
 			);
@@ -94,6 +93,7 @@
 		7799D580225F338600EC6E91 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				7799D584225F358B00EC6E91 /* Cell.swift */,
 				7799D570225F332300EC6E91 /* Main.storyboard */,
 				7799D575225F332500EC6E91 /* LaunchScreen.storyboard */,
 			);

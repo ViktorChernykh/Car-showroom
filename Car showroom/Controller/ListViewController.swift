@@ -6,7 +6,7 @@
 //  Copyright © 2019 Viktor Chernykh. All rights reserved.
 //
 
-import UIKit
+import SceneKit
 
 class ListViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
@@ -33,6 +33,28 @@ class ListViewController: UIViewController {
     }
 }
 
+extension ListViewController {
+    // MARK: - Custom Methods
+    func configure(_ cell: Cell, with car: Car) {
+        cell.nameLabel.text = car.name
+        cell.starsLabel.text = car.stars
+        
+        guard let scene = SCNScene(named: car.url) else { return }
+        
+        if (car.name == "ship") || (car.name == "Dodge") || (car.name == "ZIS-5B") {
+            // retrieve the node
+            guard let node = scene.rootNode.childNode(withName: car.name, recursively: true) else { return }
+            
+            // animate the 3d object
+            node.runAction(SCNAction.repeatForever(SCNAction.rotateBy(x: 0, y: 2, z: 0, duration: 2)))
+        }
+        cell.sceneView.scene = scene
+        
+        // configure the view
+        cell.sceneView.backgroundColor = UIColor.white
+    }
+}
+
 // MARK: - UITableViewDataSource
 extension ListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -45,7 +67,7 @@ extension ListViewController: UITableViewDataSource {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! Cell
         
-        cell.configure(with: car)
+        configure(cell, with: car)
         
         return cell
     }
@@ -60,12 +82,10 @@ extension ListViewController: UITableViewDelegate {
 // MARK: - Navigation
 extension ListViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
         guard segue.identifier == "DetailSegue" else { return }
+        guard let indexPath = tableView.indexPathForSelectedRow else { return }
         
         let controller = segue.destination as! DetailViewController
-        
-        guard let indexPath = tableView.indexPathForSelectedRow else { return }
         
         controller.car = cars[indexPath.row]
         
