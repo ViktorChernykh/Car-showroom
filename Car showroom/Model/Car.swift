@@ -2,7 +2,7 @@
 //  Car.swift
 //  Car showroom
 //
-//  Created by Viktor on 11/04/2019.
+//  Created by Viktor Chernykh on 11/04/2019.
 //  Copyright © 2019 Viktor Chernykh. All rights reserved.
 //
 

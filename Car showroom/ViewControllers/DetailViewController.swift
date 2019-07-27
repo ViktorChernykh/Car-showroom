@@ -2,7 +2,7 @@
 //  DetailViewController.swift
 //  Car showroom
 //
-//  Created by Viktor on 11/04/2019.
+//  Created by Viktor Chernykh on 11/04/2019.
 //  Copyright © 2019 Viktor Chernykh. All rights reserved.
 //
 
@@ -14,15 +14,40 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var scnView: SCNView!
     @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var nameLabel: UILabel!
-//    @IBOutlet weak var ratingLabel: UILabel!
-//    @IBOutlet weak var notesLabel: UILabel!
-//    @IBOutlet weak var timestampLabel: UILabel!
     
     var car: Car!
+    
+    override var shouldAutorotate: Bool {
+        return true
+    }
+    
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+    }
+}
+// MARK: - UIViewController Methods
+extension DetailViewController {
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        updateUI(with: view.frame.size)
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        updateUI(with: size)
+    }
+}
+
+// MARK: - Custom Methods
+extension DetailViewController {
+    // change axis in stack view
+    func updateUI(with size: CGSize) {
+        stackView.axis = size.width < size.height ? .vertical : .horizontal
     }
     
     func setupUI() {
@@ -94,14 +119,6 @@ class DetailViewController: UIViewController {
         }
     }
     
-    override var shouldAutorotate: Bool {
-        return true
-    }
-    
-    override var prefersStatusBarHidden: Bool {
-        return true
-    }
-    
 //    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
 //        if UIDevice.current.userInterfaceIdiom == .phone {
 //            return .allButUpsideDown
@@ -110,25 +127,4 @@ class DetailViewController: UIViewController {
 //        }
 //    }
 
-}
-
-// MARK: - UIViewController Methods
-extension DetailViewController {
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        updateUI(with: view.frame.size)
-    }
-    
-    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        super.viewWillTransition(to: size, with: coordinator)
-        updateUI(with: size)
-    }
-}
-
-// MARK: - Custom Methods
-extension DetailViewController {
-    // change axis in stack view
-    func updateUI(with size: CGSize) {
-        stackView.axis = size.width < size.height ? .vertical : .horizontal
-    }
 }
