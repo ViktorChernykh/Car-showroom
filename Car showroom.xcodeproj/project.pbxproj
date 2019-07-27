@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -63,8 +63,8 @@
 			isa = PBXGroup;
 			children = (
 				7799D581225F339200EC6E91 /* Model */,
-				7799D580225F338600EC6E91 /* View */,
-				7799D57F225F337900EC6E91 /* Controller */,
+				7799D580225F338600EC6E91 /* Views */,
+				7799D57F225F337900EC6E91 /* ViewControllers */,
 				7799D56C225F332300EC6E91 /* art.scnassets */,
 				7799D57E225F334200EC6E91 /* Supporting files */,
 			);
@@ -81,23 +81,23 @@
 			path = "Supporting files";
 			sourceTree = "<group>";
 		};
-		7799D57F225F337900EC6E91 /* Controller */ = {
+		7799D57F225F337900EC6E91 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
 				7799D586225F35E600EC6E91 /* ListViewController.swift */,
 				7799D56E225F332300EC6E91 /* DetailViewController.swift */,
 			);
-			path = Controller;
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
-		7799D580225F338600EC6E91 /* View */ = {
+		7799D580225F338600EC6E91 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				7799D584225F358B00EC6E91 /* Cell.swift */,
 				7799D570225F332300EC6E91 /* Main.storyboard */,
 				7799D575225F332500EC6E91 /* LaunchScreen.storyboard */,
 			);
-			path = View;
+			path = Views;
 			sourceTree = "<group>";
 		};
 		7799D581225F339200EC6E91 /* Model */ = {
@@ -144,7 +144,7 @@
 				};
 			};
 			buildConfigurationList = 7799D562225F332300EC6E91 /* Build configuration list for PBXProject "Car showroom" */;
-			compatibilityVersion = "Xcode 9.3";
+			compatibilityVersion = "Xcode 10.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (

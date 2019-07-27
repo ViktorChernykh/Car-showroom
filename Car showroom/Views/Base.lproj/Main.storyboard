@@ -22,44 +22,44 @@
                                 <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" rowHeight="64" id="dqX-nL-z0E" customClass="Cell" customModule="Car_showroom" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="320" height="64"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" rowHeight="80" id="dqX-nL-z0E" customClass="Cell" customModule="Car_showroom" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="320" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dqX-nL-z0E" id="9zj-uq-kZQ">
-                                            <rect key="frame" x="0.0" y="0.0" width="287" height="63.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="79.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <sceneKitView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H5C-Nd-mK7">
-                                                    <rect key="frame" x="15" y="0.0" width="79.5" height="63.5"/>
+                                                    <rect key="frame" x="15" y="0.0" width="107" height="80"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="63.5" id="heB-y9-79Z"/>
-                                                        <constraint firstAttribute="width" secondItem="H5C-Nd-mK7" secondAttribute="height" multiplier="5:4" id="yVY-eh-tRP"/>
+                                                        <constraint firstAttribute="height" constant="80" id="heB-y9-79Z"/>
+                                                        <constraint firstAttribute="width" secondItem="H5C-Nd-mK7" secondAttribute="height" multiplier="5:4" constant="7" id="yVY-eh-tRP"/>
                                                     </constraints>
                                                 </sceneKitView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QN0-Qo-32v">
-                                                    <rect key="frame" x="103" y="8" width="176" height="20.5"/>
+                                                    <rect key="frame" x="130.5" y="8" width="156.5" height="29.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mte-uT-XPy">
-                                                    <rect key="frame" x="103" y="34.5" width="176" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mte-uT-XPy">
+                                                    <rect key="frame" x="130.5" y="42" width="156.5" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="Mte-uT-XPy" secondAttribute="trailing" constant="8" id="435-in-1z3"/>
-                                                <constraint firstItem="Mte-uT-XPy" firstAttribute="top" secondItem="QN0-Qo-32v" secondAttribute="bottom" constant="6" id="46J-q9-EdE"/>
+                                                <constraint firstAttribute="trailing" secondItem="Mte-uT-XPy" secondAttribute="trailing" id="435-in-1z3"/>
                                                 <constraint firstItem="H5C-Nd-mK7" firstAttribute="leading" secondItem="9zj-uq-kZQ" secondAttribute="leading" constant="15" id="FRp-JQ-CP5"/>
                                                 <constraint firstItem="QN0-Qo-32v" firstAttribute="leading" secondItem="H5C-Nd-mK7" secondAttribute="trailing" constant="8.5" id="GNB-4C-Qka"/>
                                                 <constraint firstItem="Mte-uT-XPy" firstAttribute="leading" secondItem="H5C-Nd-mK7" secondAttribute="trailing" constant="8.5" id="TFu-YK-CKe"/>
+                                                <constraint firstItem="Mte-uT-XPy" firstAttribute="top" secondItem="QN0-Qo-32v" secondAttribute="bottom" constant="4.5" id="Zf5-ON-WaB"/>
                                                 <constraint firstItem="H5C-Nd-mK7" firstAttribute="top" secondItem="9zj-uq-kZQ" secondAttribute="top" id="e5F-yI-Ck2"/>
-                                                <constraint firstAttribute="bottom" secondItem="Mte-uT-XPy" secondAttribute="bottom" constant="8" id="ihX-dL-8kT"/>
+                                                <constraint firstAttribute="bottom" secondItem="Mte-uT-XPy" secondAttribute="bottom" constant="16.5" id="ihX-dL-8kT"/>
                                                 <constraint firstItem="QN0-Qo-32v" firstAttribute="top" secondItem="9zj-uq-kZQ" secondAttribute="top" constant="8" id="k2S-Qz-S6c"/>
-                                                <constraint firstAttribute="bottom" secondItem="H5C-Nd-mK7" secondAttribute="bottom" id="mHi-3J-d2k"/>
-                                                <constraint firstAttribute="trailing" secondItem="QN0-Qo-32v" secondAttribute="trailing" constant="8" id="rt8-hC-SkB"/>
+                                                <constraint firstAttribute="bottom" secondItem="H5C-Nd-mK7" secondAttribute="bottom" constant="-0.5" id="mHi-3J-d2k"/>
+                                                <constraint firstAttribute="trailing" secondItem="QN0-Qo-32v" secondAttribute="trailing" id="rt8-hC-SkB"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>

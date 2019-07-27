@@ -20,7 +20,7 @@ class ListViewController: UIViewController {
     }
     
     func saveCars() {
-        // TODO: save the meals
+        // TODO: save the cars
     }
     
     func loadCars() {
@@ -29,17 +29,16 @@ class ListViewController: UIViewController {
     
     func setupUI() {
         tableView.dataSource = self
-        tableView.delegate = self
     }
 }
 
 extension ListViewController {
     // MARK: - Custom Methods
     func configure(_ cell: Cell, with car: Car) {
+        guard let scene = SCNScene(named: car.url) else { return }
+        
         cell.nameLabel.text = car.name
         cell.starsLabel.text = car.stars
-        
-        guard let scene = SCNScene(named: car.url) else { return }
         
         if (car.name == "ship") || (car.name == "Dodge") || (car.name == "ZIS-5B") {
             // retrieve the node
@@ -68,14 +67,7 @@ extension ListViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! Cell
         
         configure(cell, with: car)
-        
         return cell
-    }
-}
-
-// MARK: - UITableViewDelegate
-extension ListViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     }
 }
 
@@ -88,7 +80,7 @@ extension ListViewController {
         let controller = segue.destination as! DetailViewController
         
         controller.car = cars[indexPath.row]
-        
+        // deselect curent row
         tableView.deselectRow(at: indexPath, animated: true)
     }
 }

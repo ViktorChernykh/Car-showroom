@@ -22,17 +22,21 @@ class DetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupUI()
+    }
+    
+    func setupUI() {
+        
+        guard let car = car else { return }
         
         // create a new scene
         let scene = SCNScene(named: car.url)!
         
-        //if (car.name == "ship") || (car.name == "Dodge") || (car.name == "ZIS-5B") {
-            // retrieve the ship node
-            let ship = scene.rootNode.childNode(withName: car.name, recursively: true)!
-            
-            // animate the 3d object
-            ship.runAction(SCNAction.repeatForever(SCNAction.rotateBy(x: 0, y: 2, z: 0, duration: 5)))
-        //}
+        // retrieve the ship node
+        let ship = scene.rootNode.childNode(withName: car.name, recursively: true)!
+        
+        // animate the 3d object
+        ship.runAction(SCNAction.repeatForever(SCNAction.rotateBy(x: 0, y: 2, z: 0, duration: 5)))
         
         // set the scene to the view
         scnView.scene = scene
@@ -46,47 +50,47 @@ class DetailViewController: UIViewController {
         // configure the view
         scnView.backgroundColor = UIColor.white
         
+        nameLabel.text = car.characteristics
+        
         // add a tap gesture recognizer
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
         scnView.addGestureRecognizer(tapGesture)
     }
     
-    @objc
-    func handleTap(_ gestureRecognize: UIGestureRecognizer) {
+    @objc func handleTap(_ gestureRecognize: UIGestureRecognizer) {
 
         // retrieve the SCNView
-        if self.view is SCNView {
-            let scnView = self.view as! SCNView
+        //guard self.view is SCNView else { return }
+        guard let scnView = self.view as? SCNView else { return }
 
-            // check what nodes are tapped
-            let p = gestureRecognize.location(in: scnView)
-            let hitResults = scnView.hitTest(p, options: [:])
-            // check that we clicked on at least one object
-            if hitResults.count > 0 {
-                // retrieved the first clicked object
-                let result = hitResults[0]
-                
-                // get its material
-                let material = result.node.geometry!.firstMaterial!
-                
-                // highlight it
+        // check what nodes are tapped
+        let p = gestureRecognize.location(in: scnView)
+        let hitResults = scnView.hitTest(p, options: [:])
+        // check that we clicked on at least one object
+        if hitResults.count > 0 {
+            // retrieved the first clicked object
+            let result = hitResults[0]
+            
+            // get its material
+            let material = result.node.geometry!.firstMaterial!
+            
+            // highlight it
+            SCNTransaction.begin()
+            SCNTransaction.animationDuration = 0.5
+            
+            // on completion - unhighlight
+            SCNTransaction.completionBlock = {
                 SCNTransaction.begin()
                 SCNTransaction.animationDuration = 0.5
                 
-                // on completion - unhighlight
-                SCNTransaction.completionBlock = {
-                    SCNTransaction.begin()
-                    SCNTransaction.animationDuration = 0.5
-                    
-                    material.emission.contents = UIColor.black
-                    
-                    SCNTransaction.commit()
-                }
-                
-                material.emission.contents = UIColor.red
+                material.emission.contents = UIColor.black
                 
                 SCNTransaction.commit()
             }
+            
+            material.emission.contents = UIColor.red
+            
+            SCNTransaction.commit()
         }
     }
     
@@ -98,13 +102,13 @@ class DetailViewController: UIViewController {
         return true
     }
     
-    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-        if UIDevice.current.userInterfaceIdiom == .phone {
-            return .allButUpsideDown
-        } else {
-            return .all
-        }
-    }
+//    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+//        if UIDevice.current.userInterfaceIdiom == .phone {
+//            return .allButUpsideDown
+//        } else {
+//            return .all
+//        }
+//    }
 
 }
 
@@ -112,7 +116,7 @@ class DetailViewController: UIViewController {
 extension DetailViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        setupUI()
+        updateUI(with: view.frame.size)
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -123,17 +127,7 @@ extension DetailViewController {
 
 // MARK: - Custom Methods
 extension DetailViewController {
-    func setupUI() {
-        guard let car = car else { return }
-
-        nameLabel.text = car.characteristics
-//                timestampLabel.text = String(car.timestamp)
-//                ratingLabel.text = car.stars
-//                notesLabel.text = car.characteristics
-        
-        updateUI(with: view.frame.size)
-    }
-    
+    // change axis in stack view
     func updateUI(with size: CGSize) {
         stackView.axis = size.width < size.height ? .vertical : .horizontal
     }
